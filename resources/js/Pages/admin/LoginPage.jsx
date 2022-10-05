@@ -1,12 +1,31 @@
-import React, { useEffect } from 'react';
-import { Link, Head } from '@inertiajs/inertia-react';
+import React, { useEffect, useState } from 'react';
+import { Link, Head, useForm } from '@inertiajs/inertia-react';
 
 // Import Template View
 import HeaderPage from '../split_admin/HeaderPage';
+import axios from 'axios';
 
 const LoginPage = (props) => {
     document.title = props.title;
     <HeaderPage />
+
+    const { data, setData, post, processing, errors, reset } = useForm({
+        email: "",
+        password: "",
+    });
+
+    const submit = (e) => {
+        e.preventDefault();
+        data.email = document.getElementById('email').value;
+        data.password = document.getElementById('password').value;
+        axios.post(props.urls, data)
+        .then(res => {
+            alert(res);
+        })
+        .catch(err => {
+            alert(err);
+        })
+    }
 
     return (
         <div className="container-xxl">
@@ -53,10 +72,10 @@ const LoginPage = (props) => {
                     <span className="app-brand-text demo text-body fw-bolder">DineIn</span>
                     </a>
                 </div>
-                <form id="formAuthentication" className="mb-3" action="#" method="POST">
+                <form id="formAuthentication" className="mb-3" onSubmit={submit} method="POST">
                     <div className="mb-3">
                     <label htmlFor="email" className="form-label">Email</label>
-                    <input type="text" className="form-control" id="uname" name="uname" placeholder="Enter your email" autoFocus spellCheck="false" />
+                    <input type="text" className="form-control" id="email" name="email" placeholder="Enter your email" autoFocus spellCheck="false" />
                     </div>
                     <div className="mb-3 form-password-toggle">
                     <div className="d-flex justify-content-between">
@@ -64,11 +83,11 @@ const LoginPage = (props) => {
                     </div>
                     <div className="input-group input-group-merge">
                         <input type="password" id="password" className="form-control" name="password" placeholder="············" aria-describedby="password" />
-                        <span className="input-group-text cursor-pointer" onClick={togglePassword}><box-icon name='hide' color='#989898' ></box-icon></span>
+                        <span className="input-group-text cursor-pointer"></span>
                     </div>
                     </div>
                     <div className="mb-3">
-                    <button className="btn btn-primary d-grid w-100" type="button">Sign in</button>
+                    <button className="btn btn-primary d-grid w-100" type="submit">Sign in</button>
                     </div>
                 </form>
                 </div>
@@ -77,10 +96,6 @@ const LoginPage = (props) => {
         </div>
     </div>
     )
-}
-
-function togglePassword() {
-    console.log()
 }
 
 export default LoginPage

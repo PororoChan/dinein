@@ -19,6 +19,8 @@ use Inertia\Inertia;
 
 // Login Page
 Route::get('admin/login', [LoginLoginPage::class, 'index']);
+// Auth
+Route::post('admin/login/auth', [LoginLoginPage::class, 'auth']);
 
 // Route::get('/', function () {
 //     return Inertia::render('Welcome', [
