@@ -16,10 +16,9 @@ import '../../../js/perfect-scroll.js'
 import '../../../js/popper.js'
 import 'boxicons'
 
-const HeaderPage = () => {
+export default function HeaderPage(props) {
     return (
-        <></>
+        <>
+        </>
     )
 }
-
-export default HeaderPage

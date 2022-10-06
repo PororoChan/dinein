@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\HomePage;
 use App\Http\Controllers\Login\LoginPage as LoginLoginPage;
 use App\Http\Controllers\LoginPage;
 use Illuminate\Foundation\Application;
@@ -22,17 +23,7 @@ Route::get('admin/login', [LoginLoginPage::class, 'index']);
 // Auth
 Route::post('admin/login/auth', [LoginLoginPage::class, 'auth']);
 
-// Route::get('/', function () {
-//     return Inertia::render('Welcome', [
-//         'canLogin' => Route::has('login'),
-//         'canRegister' => Route::has('register'),
-//         'laravelVersion' => Application::VERSION,
-//         'phpVersion' => PHP_VERSION,
-//     ]);
-// });
-
-// Route::get('/dashboard', function () {
-//     return Inertia::render('Dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
+// Admin - Index Page
+Route::get('admin/a/home', [HomePage::class, 'index']);
 
 require __DIR__ . '/auth.php';

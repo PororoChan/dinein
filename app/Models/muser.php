@@ -2,16 +2,22 @@
 
 namespace App\Models;
 
-use Illuminate\Auth\Events\Authenticated;
-use Illuminate\Auth\Middleware\Authenticate;
-use Illuminate\Foundation\Auth\User as Authenticable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class muser extends Authenticable
+class Muser extends Authenticatable
 {
-    use HasFactory;
+    use HasFactory, Notifiable;
 
-    protected $table = 'msuser';
     public $timestamps = false;
+    protected $table = 'msuser';
+    protected $primaryKey = 'idUser';
+    protected $fillable = ['nickname', 'email', 'password', 'commonname'];
+
+    public function getAuthPassword()
+    {
+        return $this->password;
+    }
 }

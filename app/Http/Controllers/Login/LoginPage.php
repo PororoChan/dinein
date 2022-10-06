@@ -22,15 +22,24 @@ class LoginPage extends Controller
 
     public function auth(Request $request)
     {
+        $res = array();
         $data = array(
             'email' => $request->email,
             'password' => $request->password,
         );
 
         if (Auth::attempt($data)) {
-            return response('Login Success', 200);
+            $res = [
+                'success' => 200,
+                'msg' => 'Login Success',
+            ];
         } else {
-            return response('Failed to Login', 500);
+            $res = [
+                'success' => 500,
+                'msg' => 'Failed to Login',
+            ];
         }
+
+        echo json_encode($res);
     }
 }

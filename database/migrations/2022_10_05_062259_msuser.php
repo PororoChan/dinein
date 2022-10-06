@@ -17,7 +17,7 @@ class Msuser extends Migration
             $table->id('idUser');
             $table->string('nickname', '100');
             $table->string('email', '100');
-            $table->string('password', '40');
+            $table->string('password');
             $table->string('commonname', '120');
         });
     }
