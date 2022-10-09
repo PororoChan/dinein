@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\mscomment;
+use App\Models\msmenu;
 use App\Models\Muser;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class UserPage extends Controller
@@ -72,6 +75,39 @@ class UserPage extends Controller
             $res = [
                 'success' => 500,
                 'msg' => 'Data Required',
+            ];
+        }
+
+        echo json_encode($res);
+    }
+
+    public function comment(Request $request)
+    {
+        $res = array();
+        $idmenu = $request->menu;
+        $comment = $request->comment;
+        $rating = $request->rating;
+        $userid = $request->userid;
+
+        if ($idmenu != '' && $comment != '') {
+            $comments = new mscomment();
+            $comments->idUser = $userid;
+            $comments->idMenu = $idmenu;
+            $comments->comment = $comment;
+            $comments->timestamp = date('Y-m-d H:i:s');
+
+            $comments->save();
+            $menu = msmenu::find($idmenu);
+            $menu->ratingcount = $menu->ratingcount + 1;
+            $menu->ratingsum = $menu->ratingsum + $rating;
+            $menu->save();
+
+            $res = [
+                'success' => 200,
+            ];
+        } else {
+            $res = [
+                'success' => 500,
             ];
         }
 

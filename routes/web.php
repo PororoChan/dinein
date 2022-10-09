@@ -70,5 +70,6 @@ Route::delete('admin/menu/delete/{id}', [Menu::class, 'delete']);
 // Front-End
 Route::get('menu', [UserMenu::class, 'index']);
 Route::get('menu/d/{id}', [UserMenu::class, 'detail']);
+Route::post('menu/comment/add', [UserPage::class, 'comment']);
 
 require __DIR__ . '/auth.php';

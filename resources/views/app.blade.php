@@ -17,6 +17,7 @@
         <link rel="stylesheet" href="../../css/theme-default.css">
         <link rel="stylesheet" href="../../css/boxicons.css">
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
 
 
         <script src="../../js/helpers.js"></script>
@@ -32,6 +33,7 @@
         <script src="../../js/jquery.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
         <script src="../../js/bs.js"></script>
         <script src="../../js/main.js"></script>
         <script src="../../js/menu.js"></script>

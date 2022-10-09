@@ -3,6 +3,7 @@ import { Link, Head } from "@inertiajs/inertia-react";
 import img from '../../../public/images/food.jpg';
 import axios from "axios";
 import { Inertia } from "@inertiajs/inertia";
+import { floor } from "lodash";
 
 const MenuShow = ({column}) => {
 
@@ -30,10 +31,15 @@ const MenuShow = ({column}) => {
                             <div className="row m-0 rounded" style={{minHeight: '120px'}}>
                                 <img src={img} alt="" style={{width: '100%', height: '200px', objectFit: 'cover', borderRadius: '8px'}}/>
                             </div>
-                            <div className="row p-3 pt-2 pb-0">
-                                <a href="#" className="p-2 px-3" onClick={() => menuDetail(data.idMenu)}>
-                                    <span className="fw-semibold fs-5 text-secondary">{data.name}</span>
-                                </a>
+                            <div className="row p-2 pt-2 pb-0">
+                                <div className="col-8">
+                                    <a href="#" className="p-2 px-3" onClick={() => menuDetail(data.idMenu)}>
+                                        <span className="fw-semibold fs-5 text-secondary">{data.name}</span>
+                                    </a>
+                                </div>
+                                <div className="col-4 text-end">
+                                    <span>{(data.ratingsum != null ? (data.ratingsum / data.ratingcount) : '0')}<i className="bx bxs-star text-warning bx-xs"></i></span>&nbsp;<span>({(data.ratingcount != null ? data.ratingcount : '0')})</span>
+                                </div>
                             </div>
                             <div className="row p-3 pt-0">
                                 <div className="col-12 p-3 pt-0 pb-0">
