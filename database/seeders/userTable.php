@@ -15,10 +15,10 @@ class userTable extends Seeder
     public function run()
     {
         DB::table('msuser')->insert([
-            'nickname' => 'Reksho Satriyo',
-            'email' => 'rekso@gmail.com',
-            'password' => app('hash')->make('rekso123'),
-            'commonname' => 'Reksho',
+            'nickname' => 'Admin',
+            'email' => 'admin@gmail.com',
+            'password' => app('hash')->make('password'),
+            'commonname' => 'Admin',
         ]);
     }
 }

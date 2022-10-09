@@ -5,6 +5,7 @@ import { Link, Head, useForm } from '@inertiajs/inertia-react';
 import HeaderPage from '../split_admin/HeaderPage';
 import axios from 'axios';
 import img from '../../../img/dinein.png'
+import { Inertia } from '@inertiajs/inertia';
 
 export default function LoginPage(props) {
     document.title = props.title;
@@ -27,6 +28,7 @@ export default function LoginPage(props) {
         .then(res => {
             if (res.data.success == 200) {
                 setLog(true)
+                Inertia.visit('http://localhost:8000/admin/home')
             } else {    
                 setLog(false)
             }

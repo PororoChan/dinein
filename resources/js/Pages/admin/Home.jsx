@@ -3,18 +3,22 @@ import { Link, Head, useForm } from "@inertiajs/inertia-react";
 
 import HeaderPage from "../split_admin/HeaderPage";
 import Sidebar from "../split_admin/Sidebar";
+import Navbar from "../split_admin/Navbar";
+import Template from "@/Layouts/Template";
 
-// Asset
-import img from '../../../img/dinein.png'
-
-export default function HomePage(props) {
+function HomePage(props) {
     document.title = props.title;
-    <HeaderPage />
-
+    
     return (
         <>
+            <HeaderPage />
             <Sidebar />
-            <h1>samlekom</h1>
+            <div className="layout-page">
+                <Navbar />   
+            </div>
         </>
     );
 }
+
+HomePage.layout = (page) => <Template children={page}/>
+export default HomePage

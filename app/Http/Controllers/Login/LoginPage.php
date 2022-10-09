@@ -42,4 +42,13 @@ class LoginPage extends Controller
 
         echo json_encode($res);
     }
+
+    public function logout()
+    {
+        Auth::logout();
+        return Inertia::render('admin/LoginPage', [
+            'title' => 'Login | DineIn',
+            'urls' => 'login/auth',
+        ]);
+    }
 }
